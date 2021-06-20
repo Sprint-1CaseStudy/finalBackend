@@ -49,7 +49,7 @@ public class OrderController {
         LOGGER.info("update-order URL is opened");
         LOGGER.info("updateOrderEntity() is initiated");
         OrderEntity orderDTO = iOrderService.updateOrder(orderID,order);
-        LOGGER.info("updateOrder() has executed");//jh
+        LOGGER.info("updateOrder() has executed");
         return new ResponseEntity<OrderEntity>(orderDTO, HttpStatus.ACCEPTED);
     }
 

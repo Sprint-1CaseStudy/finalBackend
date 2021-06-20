@@ -39,11 +39,7 @@ public class OrderServiceImpl implements IOrderService {
         	OrderEntity ordEntity = new OrderEntity(cart.getTotal(),df.format(dateobj),"card",cart.getProductName(),custID);
         	orderEntity=iOrderRepository.save(ordEntity);
         	iCartRepository.deleteById(cart.getId());
-        }
-		/*if(order==null)
-			order=null;
-		else {*/
-			
+        }	
 		LOGGER.info("addOrder() service has executed");
 		return orderEntity;
 	}
