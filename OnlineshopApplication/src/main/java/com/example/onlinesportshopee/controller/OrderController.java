@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.onlinesportshopee.entities.CartEntity;
 import com.example.onlinesportshopee.entities.OrderEntity;
 import com.example.onlinesportshopee.exception.CartNotFoundException;
-import com.example.onlinesportshopee.exception.InvalidOrderIdException;
 import com.example.onlinesportshopee.exception.OrderNotFoundException;
 import com.example.onlinesportshopee.services.IOrderService;
 import com.example.onlinesportshopee.services.OrderServiceImpl;
@@ -36,7 +35,7 @@ public class OrderController {
     private IOrderService iOrderService;
     
     @PostMapping("/add-order/{custID}")
-    public  ResponseEntity<OrderEntity> addOrder(@PathVariable Long custID)throws OrderNotFoundException,InvalidOrderIdException{
+    public  ResponseEntity<OrderEntity> addOrder(@PathVariable Long custID)throws OrderNotFoundException{
         LOGGER.info("add-order URL is opened");
         LOGGER.info("addOrderEntity() is initiated");
         OrderEntity orderDTO = iOrderService.addOrder(custID);
@@ -45,7 +44,7 @@ public class OrderController {
     }
 
     @PutMapping("/update-order/{orderID}")
-    public ResponseEntity<OrderEntity> updateOrder(@PathVariable Long orderID, @RequestBody OrderEntity order)throws OrderNotFoundException, InvalidOrderIdException{
+    public ResponseEntity<OrderEntity> updateOrder(@PathVariable Long orderID, @RequestBody OrderEntity order)throws OrderNotFoundException{
         LOGGER.info("update-order URL is opened");
         LOGGER.info("updateOrderEntity() is initiated");
         OrderEntity orderDTO = iOrderService.updateOrder(orderID,order);
@@ -54,7 +53,7 @@ public class OrderController {
     }
 
     @DeleteMapping("/remove-order/{orderID}")
-    public ResponseEntity<OrderEntity> deleteOrder(@PathVariable long orderID)throws OrderNotFoundException, InvalidOrderIdException{
+    public ResponseEntity<OrderEntity> deleteOrder(@PathVariable long orderID)throws OrderNotFoundException{
         LOGGER.info("delete-order URL is opened");
         LOGGER.info("deleteOrderEntity() is initiated");
         OrderEntity orderDTO=iOrderService.deleteOrder(orderID);
@@ -72,7 +71,7 @@ public class OrderController {
      }
     
     @GetMapping("/getOrder/{custId}")
-	public List<OrderEntity> getCartdetails(@PathVariable Long custId) throws InvalidOrderIdException {
+	public List<OrderEntity> getCartdetails(@PathVariable Long custId) throws OrderNotFoundException {
     	LOGGER.info("getById URL is opened");
         LOGGER.info("getById() is initiated");
         LOGGER.info("getOrderById() has executed");

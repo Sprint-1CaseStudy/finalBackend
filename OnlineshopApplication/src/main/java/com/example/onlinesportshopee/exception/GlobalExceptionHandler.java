@@ -54,10 +54,6 @@ public class GlobalExceptionHandler {
 		return new ResponseEntity<>(n.getMessage(), HttpStatus.BAD_REQUEST);
 	}
 	
-	@ExceptionHandler(InvalidOrderIdException.class)
-	public ResponseEntity<?> invalidorderid(InvalidOrderIdException n, WebRequest req) {
-		return new ResponseEntity<>(n.getMessage(), HttpStatus.BAD_REQUEST);
-	}
 	
 	@ExceptionHandler(InvalidProductInputException.class)
 	public ResponseEntity<?> invalidproductid(InvalidProductInputException n, WebRequest req) {
